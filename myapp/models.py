@@ -2,7 +2,10 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 class Quote(models.Model):
-    text = models.TextField(unique=True)  # сама цитата (без дубликатов)
+    text = models.TextField(unique=True,
+            error_messages={
+                "unique": "Такая цитата уже существует!"
+            })  # сама цитата (без дубликатов)
     source = models.CharField(max_length=200)  # источник (фильм, книга и т.д.)
     weight = models.PositiveIntegerField(default=1)  # "вес" цитаты
     likes = models.IntegerField(default=0)  # лайки
@@ -21,3 +24,4 @@ class Quote(models.Model):
 
     def __str__(self):
         return f'"{self.text[:50]}..." - {self.source}'
+
