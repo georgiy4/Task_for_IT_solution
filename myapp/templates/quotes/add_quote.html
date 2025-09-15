@@ -1,0 +1,13 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<h1>Добавить новую цитату</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>
+
+<p><a href="{% url 'random_quote' %}">На главную</a></p>
+{% endblock %}

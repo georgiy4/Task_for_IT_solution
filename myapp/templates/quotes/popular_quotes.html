@@ -1,0 +1,21 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<h1>10 самых популярных цитат</h1>
+
+{% if quotes %}
+<ul>
+    {% for quote in quotes %}
+    <li>
+        "{{ quote.text }}" - {{ quote.source.name }}
+        (👍 {{ quote.likes }} | 👎 {{ quote.dislikes }} | 👀 {{ quote.views }})
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Пока нет цитат.</p>
+{% endif %}
+
+<p>Всего лайков: {{ total_likes }}</p>
+<p><a href="{% url 'random_quote' %}">На главную</a></p>
+{% endblock %}

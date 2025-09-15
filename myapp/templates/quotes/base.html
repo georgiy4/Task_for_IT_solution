@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Случайные цитаты</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'random_quote' %}">Главная</a> |
+        <a href="{% url 'add_quote' %}">Добавить цитату</a> |
+        <a href="{% url 'popular_quotes' %}">Популярные</a>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
